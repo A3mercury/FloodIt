@@ -6,8 +6,10 @@
 package flood;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -24,10 +26,15 @@ public class Game extends JPanel
     JPanel BoardPanel;
     JPanel ColorSelectorPanel;
     JPanel TotalPanel;
+    JPanel ButtonsPanel;
     
     JLabel totalLabel;
     TotalMoves total = new TotalMoves();
     
+    JButton NewGameButton = new JButton("New Game");
+    JButton HighScoreButton = new JButton("High Scores");
+    
+    CreateNewGame NewGame;
     
     public Game()
     {
@@ -55,9 +62,17 @@ public class Game extends JPanel
         Menu.setPreferredSize(new Dimension(300,100));
         ColorSelectorPanel.add(Menu);
         
+        // Buttons Panel
+        ButtonsPanel = new JPanel();
+        ButtonsPanel.setPreferredSize(new Dimension(300, 150));
+        NewGame = new CreateNewGame(Board);
+        ButtonsPanel.add(NewGame, BorderLayout.LINE_START);
+        ButtonsPanel.add(HighScoreButton, BorderLayout.LINE_END);
+        
         // Game Panel   
         add(BoardPanel, BorderLayout.PAGE_START);
         add(ColorSelectorPanel, BorderLayout.LINE_START);
         add(TotalPanel, BorderLayout.LINE_END);
+        add(ButtonsPanel, BorderLayout.PAGE_END);
     }
 }

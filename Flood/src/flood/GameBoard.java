@@ -49,9 +49,4 @@ public final class GameBoard extends JPanel
             }
         }
     }
-    
-    public BoardCell[][] ReturnBoard()
-    {
-        return BoardCells;
-    }
 }

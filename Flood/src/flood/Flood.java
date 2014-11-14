@@ -5,10 +5,7 @@
  */
 package flood;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,7 +21,7 @@ public class Flood extends JFrame
     //public GameBoard Board = new GameBoard();
     //SelectorMenu menu = new SelectorMenu();
     
-    private Game game = new Game();
+    private final Game game = new Game();
     
     JLabel totalLabel;
     int total = 0;
@@ -34,7 +31,7 @@ public class Flood extends JFrame
         super("Flood It - Austin Andrews");    
         
         // Main Window Properties
-        setSize(new Dimension(500, 600));
+        setSize(new Dimension(500, 625));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         add(game);
