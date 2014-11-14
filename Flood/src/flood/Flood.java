@@ -20,12 +20,11 @@ import javax.swing.JPanel;
 public class Flood extends JFrame
 {    
     JPanel MainPanel;
-    JPanel BoardPanel;
-    JPanel ColorSelectorPanel;
-    JPanel TotalPanel;
     
-    public GameBoard Board = new GameBoard();
-    SelectorMenu menu = new SelectorMenu(Board);
+    //public GameBoard Board = new GameBoard();
+    //SelectorMenu menu = new SelectorMenu();
+    
+    private Game game = new Game();
     
     JLabel totalLabel;
     int total = 0;
@@ -34,41 +33,11 @@ public class Flood extends JFrame
     {
         super("Flood It - Austin Andrews");    
         
-        // Total Panel
-        TotalPanel = new JPanel();
-        TotalPanel.setPreferredSize(new Dimension(100, 100));
-        totalLabel = new JLabel("Total Moves:");
-        totalLabel.setFont(new Font("San-Serif", Font.BOLD, 14));
-        TotalPanel.add(totalLabel);
-        totalLabel = new JLabel();
-        totalLabel.setFont(new Font("San-Serif", Font.BOLD, 20));
-        totalLabel.setText(total + "");
-        TotalPanel.add(totalLabel);
-        
-        // Color Selector Panel
-        ColorSelectorPanel = new JPanel();
-        ColorSelectorPanel.setPreferredSize(new Dimension(300, 100));
-        menu.setPreferredSize(new Dimension(300,100));
-        ColorSelectorPanel.add(menu);
-        
-        // Board Panel
-        BoardPanel = new JPanel();
-        BoardPanel.setPreferredSize(new Dimension(500, 425));
-        Board.setPreferredSize(new Dimension(400, 400));
-        BoardPanel.add(Board);
-        
-        // Main Panel
-        MainPanel = new JPanel();
-        MainPanel.setSize(new Dimension(500,550));       
-        MainPanel.add(BoardPanel, BorderLayout.PAGE_START);
-        MainPanel.add(ColorSelectorPanel, BorderLayout.LINE_START);
-        MainPanel.add(TotalPanel, BorderLayout.LINE_END);
-        
         // Main Window Properties
         setSize(new Dimension(500, 600));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        add(MainPanel);
+        add(game);
         setVisible(true);
     }
     

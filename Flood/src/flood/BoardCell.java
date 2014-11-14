@@ -19,17 +19,18 @@ import javax.swing.JPanel;
 public class BoardCell extends JPanel
 {
     public int cellNum;
+    Rectangle2D shape = new Rectangle2D.Float();
     
     public BoardCell()
     {
         cellNum = -1;
         setLayout(new GridLayout(1,1));
+        shape.setFrame(0,0,40,40);
     }
     
     @Override
     public void paint(Graphics g)
     {
-        Rectangle2D shape = new Rectangle2D.Float();
         shape.setFrame(0, 0, 40, 40);
         Graphics2D g2 = (Graphics2D) g;
 

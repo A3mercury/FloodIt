@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  *
  * @author Mercury
  */
-public class GameBoard extends JPanel
+public final class GameBoard extends JPanel
 {
     private final int ROWS = 10;
     private final int COLS = 10;
