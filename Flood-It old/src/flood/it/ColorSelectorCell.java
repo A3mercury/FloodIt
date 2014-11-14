@@ -20,7 +20,7 @@ public class ColorSelectorCell extends Cell
 {
     JPanel newCell = new JPanel();
     private ICellSelectorEventListener cellEventListener;
-    
+        
     public ColorSelectorCell(int colorNumber, ICellSelectorEventListener parent)
     {
         super(colorNumber);
@@ -48,6 +48,7 @@ public class ColorSelectorCell extends Cell
         // Event Listener
         cellEventListener = parent;
         this.addMouseListener(new MouseAdapter() {
+            @Override
             public void mouseClicked(MouseEvent e){
                 buttonClicked(e);
             }
@@ -56,12 +57,16 @@ public class ColorSelectorCell extends Cell
     
     private void buttonClicked(MouseEvent e)
     {
-       //System.out.print(e);
+        //System.out.print(e.toString());
         
         // get top left cell (and any cells of the same color next to it)
+        
+        
         
         // change the color to the selected color
         
         // count moves
+        
+        cellEventListener.SelectorClicked(this);
     }
 }

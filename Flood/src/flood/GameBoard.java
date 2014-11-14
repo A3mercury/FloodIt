@@ -3,23 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package flood.it;
+package flood;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.util.Random;
 import javax.swing.JPanel;
 
 /**
  *
- * @author Austin Andrews
+ * @author Mercury
  */
 public class GameBoard extends JPanel
 {
     private final int ROWS = 10;
     private final int COLS = 10;
+    
+    Random random;
     private int randomNumber;
-    private Cell[][] cells = new Cell[ROWS][COLS];
+    
+    public BoardCell[][] BoardCells = new BoardCell[ROWS][COLS];
+    BoardCell newCell;
     
     public GameBoard()
     {
@@ -27,24 +32,26 @@ public class GameBoard extends JPanel
         InitializeGameBoard();
     }
     
-    private void InitializeGameBoard()
-    {
-        Random random = new Random();
+    public void InitializeGameBoard()
+    {        
+        random = new Random();
         
-        for (int row = 0; row < ROWS; row++)
+        for(int row = 0; row < ROWS; row++)
         {
-            for (int col = 0; col < COLS; col++)
+            for(int col = 0; col < COLS; col++)
             {
                 randomNumber = random.nextInt(6);
                 
-                Cell newCell = new Cell(randomNumber);
-                cells[row][col] = newCell;
+                newCell = new BoardCell();
+                newCell.cellNum = randomNumber;
+                BoardCells[row][col] = newCell;
                 add(newCell);
             }
         }
-        
-       
-        
-        
+    }
+    
+    public BoardCell[][] ReturnBoard()
+    {
+        return BoardCells;
     }
 }

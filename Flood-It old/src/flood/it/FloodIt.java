@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
@@ -20,9 +21,12 @@ import javax.swing.JPanel;
 public class FloodIt extends JFrame
 {
     private JPanel NewPanel;
+    private JPanel ContainerPanel;
     
     private final GameBoard gameBoard = new GameBoard();
     private ColorSelectorMenu colorSelector = new ColorSelectorMenu();
+    
+    public static int total = 0;
     
     private FloodIt()
     {
@@ -30,7 +34,7 @@ public class FloodIt extends JFrame
         super("Flood It - By Austin Andrews");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        setSize(new Dimension(300, 350));
+        setSize(new Dimension(300, 375));
         setLayout(new BorderLayout());
         
         // Top Panel
@@ -45,12 +49,29 @@ public class FloodIt extends JFrame
         NewPanel.add(gameBoard);
         add(NewPanel, BorderLayout.CENTER);
         
-        // Bottom Panel
+        // Container Panel
+        ContainerPanel = new JPanel();
+        ContainerPanel.setPreferredSize(new Dimension(300, 75));
+        ContainerPanel.setBackground(Color.GRAY);
+        
+        // ColorSelector Panel
         NewPanel = new JPanel();
-        NewPanel.setPreferredSize(new Dimension(300, 50));
+        NewPanel.setPreferredSize(new Dimension(200, 50));
         NewPanel.setBackground(Color.GRAY);
         NewPanel.add(colorSelector);
-        add(NewPanel, BorderLayout.SOUTH);
+        ContainerPanel.add(NewPanel, BorderLayout.WEST);
+        
+        // Move Total panel
+        JLabel totalLabel = new JLabel("Total");
+
+        NewPanel = new JPanel();
+        NewPanel.setPreferredSize(new Dimension(50, 50));
+        NewPanel.setBackground(Color.GRAY);
+        NewPanel.add(totalLabel);
+
+        ContainerPanel.add(NewPanel, BorderLayout.EAST);
+                
+        add(ContainerPanel, BorderLayout.SOUTH);
         
         setVisible(true);
     }
@@ -62,6 +83,7 @@ public class FloodIt extends JFrame
     {
         // TODO code application logic here
         FloodIt floodIt = new FloodIt();
+        
     }
     
 }
